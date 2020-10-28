@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.govmaz.mapper.UserMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.govmaz.entity.User" id="userMap">
+    <result property="userId" column="user_id"/>
+    <result property="username" column="username"/>
+    <result property="password" column="password"/>
+    <result property="createTime" column="create_time"/>
+    <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId!=null">
+                user_id,
+            </if>
+            <if test="username!=null">
+                username,
+            </if>
+            <if test="password!=null">
+                password,
+            </if>
+            <if test="createTime!=null">
+                create_time,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId!=null">
+                #{userId},
+            </if>
+            <if test="username!=null">
+                #{username},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="createTime!=null">
+                #{createTime},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="userId!=null">
+                    user_id = #{userId},
+                </if>
+                <if test="username!=null">
+                    username = #{username},
+                </if>
+                <if test="password!=null">
+                    password = #{password},
+                </if>
+                <if test="createTime!=null">
+                    create_time = #{createTime},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+                </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="userId" >
+        insert into user
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update user
+        <include refid="setAttrValue" />
+        where user_id = #{userId}
+    </update>
+
+    <update id="delete">
+        update user
+        set data_status = "D"
+        where user_id = #{id}
+    </update>
+
+    <select id="selectByName" resultMap="userMap">
+        select * from user where username = #{username}
+    </select>
+
+
+</mapper>
