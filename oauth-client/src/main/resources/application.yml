@@ -1,6 +1,8 @@
 auth-server: http://localhost:8420/auth # 认证服务器地址
 
 server:
+  servlet:
+    context-path: /rest
   port: 8812
 security:
   oauth2:

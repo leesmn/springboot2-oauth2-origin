@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.csrf().disable() //关闭防跨域
             .authorizeRequests()
             .antMatchers("/userinfo").permitAll()
-            .antMatchers(HttpMethod.POST,"/token").permitAll()
+            .antMatchers(HttpMethod.POST,"/login").permitAll()
             .antMatchers(HttpMethod.OPTIONS).permitAll() // 放开权限的url
             .anyRequest()
             .authenticated();//关闭防跨域

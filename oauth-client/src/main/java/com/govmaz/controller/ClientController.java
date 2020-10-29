@@ -45,7 +45,7 @@ public class ClientController {
     return result;
   }
 
-  @PostMapping("/token")
+  @PostMapping("/login")
 //  @Secured("ROLE_USER")
   @ResponseBody
   public Object getToken(@RequestBody User userParam) {//@RequestBody User userParam
@@ -58,6 +58,13 @@ public class ClientController {
     }
   }
 
+  @PostMapping(value = "/logout")
+  public Result logout() throws Exception {
+    return ResultGenerator.genSuccessResult();
+  }
+
+
+
   @GetMapping(value = "/userinfo")
   @ResponseBody
   public Result selectByName(@RequestParam(value = "username") String username) throws Exception {
@@ -67,4 +74,5 @@ public class ClientController {
     }
     return ResultGenerator.genFailResult("用户不存在", ResultCode.INTERNAL_SERVER_ERROR);
   }
+
 }

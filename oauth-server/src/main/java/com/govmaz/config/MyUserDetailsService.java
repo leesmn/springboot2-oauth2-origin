@@ -37,7 +37,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
         Map<String,Object> param = new HashMap<>();
         param.put("username",username);
-        Map<String,Object> result = (Map<String,Object>)RestUtil.requestApi("http://127.0.0.1:8812/userinfo?username={username}",param,restTemplate);
+        Map<String,Object> result = (Map<String,Object>)RestUtil.requestApi("http://127.0.0.1:8812/rest/userinfo?username={username}",param,restTemplate);
         if(!result.get("code").equals(200)){
             throw new UsernameNotFoundException("用户不存在");
         }else{
