@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.govmaz.mapper.CoPolicyMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.govmaz.entity.CoPolicy" id="coPolicyMap">
+    <result property="id" column="id"/>
+    <result property="projectName" column="project_name"/>
+    <result property="areaCode" column="area_code"/>
+    <result property="areaName" column="area_name"/>
+    <result property="acceptDep" column="accept_dep"/>
+    <result property="declareStart" column="declare_start"/>
+    <result property="declareEnd" column="declare_end"/>
+    <result property="declareInstruction" column="declare_instruction"/>
+    <result property="createBy" column="create_by"/>
+    <result property="createAt" column="create_at"/>
+    <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id!=null">
+                id,
+            </if>
+            <if test="projectName!=null">
+                project_name,
+            </if>
+            <if test="areaCode!=null">
+                area_code,
+            </if>
+            <if test="areaName!=null">
+                area_name,
+            </if>
+            <if test="acceptDep!=null">
+                accept_dep,
+            </if>
+            <if test="declareStart!=null">
+                declare_start,
+            </if>
+            <if test="declareEnd!=null">
+                declare_end,
+            </if>
+            <if test="declareInstruction!=null">
+                declare_instruction,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id!=null">
+                #{id},
+            </if>
+            <if test="projectName!=null">
+                #{projectName},
+            </if>
+            <if test="areaCode!=null">
+                #{areaCode},
+            </if>
+            <if test="areaName!=null">
+                #{areaName},
+            </if>
+            <if test="acceptDep!=null">
+                #{acceptDep},
+            </if>
+            <if test="declareStart!=null">
+                #{declareStart},
+            </if>
+            <if test="declareEnd!=null">
+                #{declareEnd},
+            </if>
+            <if test="declareInstruction!=null">
+                #{declareInstruction},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="id!=null">
+                    id = #{id},
+                </if>
+                <if test="projectName!=null">
+                    project_name = #{projectName},
+                </if>
+                <if test="areaCode!=null">
+                    area_code = #{areaCode},
+                </if>
+                <if test="areaName!=null">
+                    area_name = #{areaName},
+                </if>
+                <if test="acceptDep!=null">
+                    accept_dep = #{acceptDep},
+                </if>
+                <if test="declareStart!=null">
+                    declare_start = #{declareStart},
+                </if>
+                <if test="declareEnd!=null">
+                    declare_end = #{declareEnd},
+                </if>
+                <if test="declareInstruction!=null">
+                    declare_instruction = #{declareInstruction},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+                </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" >
+        insert into co_policy
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update co_policy
+        <include refid="setAttrValue" />
+        where id = #{id}
+    </update>
+
+    <update id="delete">
+        update co_policy
+        set data_status = "D"
+        where id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="coPolicyMap">
+        select * from co_policy  order by create_at desc
+    </select>
+
+
+</mapper>

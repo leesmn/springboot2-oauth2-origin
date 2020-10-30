@@ -43,7 +43,8 @@ public class ServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         // 配置token获取和验证时的策略
-        security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+//        security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+        security.checkTokenAccess("permitAll()").checkTokenAccess("isAuthenticated()").allowFormAuthenticationForClients();
     }
 
     @Override
@@ -85,9 +86,9 @@ public class ServerConfig extends AuthorizationServerConfigurerAdapter {
 
     }
 
-    // 使用最基本的InMemoryTokenStore生成token
-    @Bean
-    public TokenStore memoryTokenStore() {
-        return new InMemoryTokenStore();
-    }
+//    // 使用最基本的InMemoryTokenStore生成token
+//    @Bean
+//    public TokenStore memoryTokenStore() {
+//        return new InMemoryTokenStore();
+//    }
 }
