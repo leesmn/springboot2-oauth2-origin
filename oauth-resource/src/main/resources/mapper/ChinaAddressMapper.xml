@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.govmaz.entity.mapper.ChinaAddressMapper">
+  <resultMap id="BaseResultMap" type="com.govmaz.entity.ChinaAddress">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="MyTexts" jdbcType="VARCHAR" property="mytexts" />
+    <result column="ParentId" jdbcType="VARCHAR" property="parentid" />
+    <result column="MyTables" jdbcType="VARCHAR" property="mytables" />
+    <result column="MyColums" jdbcType="VARCHAR" property="mycolums" />
+    <result column="Sort" jdbcType="INTEGER" property="sort" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+    <result column="CreateTime" jdbcType="DATE" property="createtime" />
+    <result column="CreatePerson" jdbcType="VARCHAR" property="createperson" />
+    <result column="UpdateTime" jdbcType="DATE" property="updatetime" />
+    <result column="UpdatePerson" jdbcType="VARCHAR" property="updateperson" />
+  </resultMap>
+
+  <select id="queryChinaAddress" resultType="com.govzch.spray.model.ChinaAddress">
+    SELECT * FROM china_address WHERE 1=1 and MyTables='SysPerson'and MyColums=#{myColums} and ParentId=#{parentId}
+  </select>
+
+  <select id="getAddressName" resultType="java.lang.String">
+     SELECT MyTexts FROM china_address WHERE 1=1 and Id=#{id}
+  </select>
+</mapper>

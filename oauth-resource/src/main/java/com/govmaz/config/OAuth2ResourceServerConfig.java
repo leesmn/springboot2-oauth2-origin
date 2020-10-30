@@ -45,7 +45,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
          * 进入nb-order-api的所有请求，哪些要拦截，哪些要放过，在这里配置
          */
         http.authorizeRequests()
-                .antMatchers("/login/**")
+                .antMatchers("/login/**","/userinfo/**")
                 .permitAll() //放过/haha不拦截
                 .antMatchers("/swagger**/**","/webjars/**","/swagger-ui.html","/doc.html","/v2/**")
                 .permitAll()
