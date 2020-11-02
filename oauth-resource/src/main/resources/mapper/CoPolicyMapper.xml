@@ -159,5 +159,9 @@
         select * from co_policy  order by create_at desc
     </select>
 
+    <select id="selectById" resultMap="coPolicyMap">
+        select * from co_policy where id = #{id}
+    </select>
+
 
 </mapper>

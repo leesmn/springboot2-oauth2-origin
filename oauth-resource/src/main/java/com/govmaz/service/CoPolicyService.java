@@ -17,5 +17,7 @@ public interface CoPolicyService {
 
     int delete(int id);
 
+    CoPolicy selectById(Integer id);
+
     PageInfo<CoPolicy> selectAllPage(int page, int size);
 }

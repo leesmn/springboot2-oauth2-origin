@@ -3,6 +3,7 @@ package com.govmaz.mapper;
 import com.govmaz.entity.CoPolicy;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 
 /**
@@ -21,4 +22,6 @@ public interface CoPolicyMapper {
     int delete(int id);
 
     List<CoPolicy> selectAll();
+
+    CoPolicy selectById(@Param("id") Integer id);
 }

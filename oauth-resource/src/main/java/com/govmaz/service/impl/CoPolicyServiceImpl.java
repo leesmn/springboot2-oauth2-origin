@@ -38,6 +38,11 @@ public class CoPolicyServiceImpl implements CoPolicyService {
     }
 
     @Override
+    public CoPolicy selectById(Integer id) {
+        return instCoPolicyMapper.selectById(id);
+    }
+
+    @Override
     public PageInfo<CoPolicy> selectAllPage(int page,int size) {
         PageHelper.startPage(page,size);
         List<CoPolicy> pageResult = instCoPolicyMapper.selectAll();

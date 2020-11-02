@@ -1,4 +1,4 @@
-package com.govmaz.controller;
+package com.govmaz.controller.pub;
 
 import com.govmaz.common.Result;
 import com.govmaz.common.ResultCode;
@@ -20,6 +20,7 @@ import org.springframework.security.oauth2.provider.authentication.OAuth2Authent
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @Api(tags="登录接口")
 @RestController
+@RequestMapping("/pub")
 public class ClientController {
 
   @Autowired

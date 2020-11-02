@@ -1,4 +1,4 @@
-package com.govmaz.controller;
+package com.govmaz.controller.rest;
 
 import com.github.pagehelper.PageInfo;
 import com.govmaz.common.Result;
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags="政策管理")
 @RestController
-@RequestMapping("coPolicy")
-public class CoPolicyController {
+@RequestMapping("/rest/coPolicy")
+public class RestCoPolicyController {
     @Autowired
     CoPolicyService instCoPolicyService;
 
@@ -45,10 +45,17 @@ public class CoPolicyController {
         return ResultGenerator.genSuccessResult();
     }
 
-    @ApiOperation("分页获取政策列表")
-    @GetMapping(value = "/list")
-    public Result selectAllPage(@ApiParam("查看第几页") @RequestParam(value="page") int page,@ApiParam("每页多少条") @RequestParam(value="limit") int limit) throws Exception {
-        PageInfo<CoPolicy> reslut = instCoPolicyService.selectAllPage(page,limit);
-        return ResultGenerator.genSuccessPageResult(reslut);
-    }
+//    @ApiOperation("分页获取政策列表")
+//    @GetMapping(value = "/list")
+//    public Result selectAllPage(@ApiParam("查看第几页") @RequestParam(value="page") int page,@ApiParam("每页多少条") @RequestParam(value="limit") int limit) throws Exception {
+//        PageInfo<CoPolicy> reslut = instCoPolicyService.selectAllPage(page,limit);
+//        return ResultGenerator.genSuccessPageResult(reslut);
+//    }
+//
+//    @ApiOperation("通过id获取政策详细")
+//    @GetMapping(value = "/detail/{id}")
+//    public Result selectDetail(@PathVariable("id") int id) throws Exception {
+//        CoPolicy reslut = instCoPolicyService.selectById(id);
+//        return ResultGenerator.genSuccessResult(reslut);
+//    }
 }
