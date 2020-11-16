@@ -4,9 +4,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
-import javax.validation.constraints.Size;
-import springfox.documentation.annotations.ApiIgnore;
-
 
 /**
  * 
@@ -24,7 +21,6 @@ public class User implements Serializable {
 	
 	    //用户名称,手机号
 		@ApiModelProperty("姓名")
-		@Size(max = 20)
     private String username;
 	
 	    //密码
